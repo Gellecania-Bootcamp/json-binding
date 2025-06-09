@@ -1,0 +1,69 @@
+{
+  "Products": [
+    {
+      "ProductID": "1",
+      "ProductName": "Gaming Keyboard",
+      "SupplierID": 1,
+      "CategoryID": 2,
+      "QuantityPerUnit": "1",
+      "UnitPrice": 38656,
+      "UnitsInStock": 65,
+      "UnitsOnOrder": 12,
+      "ReorderLevel": 4,
+      "Discontinued": false,
+      "CurrencyCode": "PHP"
+    },
+    {
+      "ProductID": "2",
+      "ProductName": "Wireless Mouse",
+      "SupplierID": 4,
+      "CategoryID": 3,
+      "QuantityPerUnit": "1",
+      "UnitPrice": 9354,
+      "UnitsInStock": 34,
+      "UnitsOnOrder": 12,
+      "ReorderLevel": 3,
+      "Discontinued": false,
+      "CurrencyCode": "PHP"
+    },
+    {
+      "ProductID": "3",
+      "ProductName": "Airpods",
+      "SupplierID": 1,
+      "CategoryID": 6,
+      "QuantityPerUnit": "1",
+      "UnitPrice": 6375,
+      "UnitsInStock": 22,
+      "UnitsOnOrder": 6,
+      "ReorderLevel": 2,
+      "Discontinued": false,
+      "CurrencyCode": "PHP"
+    },
+    {
+      "ProductID": "4",
+      "ProductName": "Ergonomic Gaming Chair",
+      "SupplierID": 3,
+      "CategoryID": 1,
+      "QuantityPerUnit": "1",
+      "UnitPrice": 96330,
+      "UnitsInStock": 30,
+      "UnitsOnOrder": 23,
+      "ReorderLevel": 4,
+      "Discontinued": false,
+      "CurrencyCode": "PHP"
+    },
+    {
+      "ProductID": "5",
+      "ProductName": "Bluetooth Speaker",
+      "SupplierID": 3,
+      "CategoryID": 8,
+      "QuantityPerUnit": "1",
+      "UnitPrice": 20752,
+      "UnitsInStock": 17,
+      "UnitsOnOrder": 35,
+      "ReorderLevel": 2,
+      "Discontinued": false,
+      "CurrencyCode": "PHP"
+    }
+  ]
+}

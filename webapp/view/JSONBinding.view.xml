@@ -1,0 +1,121 @@
+<mvc:View 
+  controllerName="sapips.training.jsonbinding.controller.JSONBinding"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+  xmlns:layout="sap.ui.layout"
+  xmlns:type="sap.ui.model.type.Currency"
+  xmlns:mobileLibrary="sap/m/library">
+
+  <Page id="page" title="{i18n>title}">
+    <VBox id="mainVBox" class="sapUiSmallMargin">
+
+      <!-- Data Binding Basics Panel -->
+      <Panel id="dataBindingPanel" headerText="{i18n>dataBindingBasics}" class="sapUiResponsiveMargin" width="auto">
+        <form:SimpleForm id="dataBindingForm">
+          <Label id="lblEidInput" text="{i18n>eidLabel}"/>
+          <Input id="eidInput" value="{/Eid}" enabled="{/Enabled}" width="300px"/>
+
+          <Label id="lblEnabledCheckBox" text="{i18n>enabledLabel}"/>
+          <CheckBox id="enabledCheckBox" selected="{/Enabled}"/>
+        </form:SimpleForm>
+      </Panel>
+
+      <!-- Address Details Panel -->
+      <Panel id="addressPanel" headerText="{i18n>addressDetails}" class="sapUiResponsiveMargin" width="auto">
+        <form:SimpleForm id="addressForm">
+          <Label id="lblAddress" text="{i18n>addressLabel}"/>
+          <Text
+            id="addressText"
+            text="{= ${/Address/Street} + ' ' + ${/Address/Zip} + ' ' + ${/Address/City} + ' ' + ${/Address/Country} }"
+            class="sapUiSmallMarginBottom" />
+          <Link href="{/Eid}"
+            id="idLink"
+            text="{i18n>sendEmail}" press=".onSendEmail" />
+          <Label id="lblSalesAmount" text="{i18n>salesAmount}" class="sapUiSmallMarginBegin"/>
+          <Input
+            id="salesAmountInput"
+            description="{/CurrencyCode}"
+            class="sapUiSmallMarginBegin"
+            enabled="{/Enabled}"
+            maxLength="8"
+            value="{
+              parts: [
+                { path: '/SalesAmount' }
+              ],
+              type: 'sap.ui.model.type.Currency',
+              formatOptions: { showMeasure: false }
+            }" width="300px" />
+        </form:SimpleForm>
+      </Panel>
+
+      <!-- Aggregation Binding Panel -->
+      <Panel id="aggregationPanel" headerText="{i18n>aggregationBinding}" class="sapUiResponsiveMargin" width="auto">
+        <List
+          id="productList"
+          items="{path: 'ProductsModel>/Products'}">
+          <items>
+            <ObjectListItem id="idObjectListItem" title="{ProductsModel>ProductName}" type="Active" press=".onItemSelected"
+            number="{
+              parts: [
+                {path: 'ProductsModel>UnitPrice'}
+              ],
+              type: 'sap.ui.model.type.Currency',
+              formatOptions: { showMeasure: false }            
+            }"
+            numberUnit="{/CurrencyCode}">
+            <attributes>
+              <ObjectAttribute title="Stock on Hand" text="{ProductsModel>QuantityPerUnit}"/>
+              <ObjectAttribute title="Current Stock Value"
+                text="{
+                  parts: [
+                    {path: 'ProductsModel>UnitPrice'},
+                    {path: 'ProductsModel>UnitsInStock'}
+                  ],
+                  formatter: '.formatStockValue'
+                }"/>
+            </attributes>            
+            </ObjectListItem>
+          </items>
+        </List>
+      </Panel>
+
+      <!-- Product Details Panel -->
+      <Panel id="productDetailsPanel" headerText="{i18n>productDetails}" class="sapUiResponsiveMargin" width="auto">
+        <form:SimpleForm id="productDetailsForm">
+          <Label id="lblProductID" text="{i18n>productID}"/>
+          <Input id="productIDInput" value="{ProductsModel>ProductID}"/>
+
+          <Label id="lblProductName" text="{i18n>productName}"/>
+          <Input id="productNameInput" value="{ProductsModel>ProductName}"/>
+
+          <Label id="lblSupplierID" text="{i18n>supplierID}"/>
+          <Input id="supplierIDInput" value="{ProductsModel>SupplierID}"/>
+
+          <Label id="lblCategoryID" text="{i18n>categoryID}"/>
+          <Input id="categoryIDInput" value="{ProductsModel>CategoryID}"/>
+
+          <Label id="lblQuantityPerUnit" text="{i18n>quantityPerUnit}"/>
+          <Input id="quantityPerUnitInput" value="{ProductsModel>QuantityPerUnit}"/>
+
+          <Label id="lblUnitPrice" text="{i18n>unitPrice}"/>
+          <Input id="unitPriceInput" value="{ProductsModel>UnitPrice}"/>
+
+          <Label id="lblUnitsInStock" text="{i18n>unitsInStock}"/>
+          <Input id="unitsInStockInput" value="{ProductsModel>UnitsInStock}"/>
+
+          <Label id="lblUnitsOnOrder" text="{i18n>unitsOnOrder}"/>
+          <Input id="unitsOnOrderInput" value="{ProductsModel>UnitsOnOrder}"/>
+
+          <Label id="lblReorderLevel" text="{i18n>reorderLevel}"/>
+          <Input id="reorderLevelInput" value="{ProductsModel>ReorderLevel}"/>
+
+          <Label id="lblDiscontinued" text="{i18n>discontinued}"/>
+          <Input id="discontinuedInput" value="{ProductsModel>Discontinued}"/>
+        </form:SimpleForm>
+      </Panel>
+
+    </VBox>
+  </Page>
+</mvc:View>
